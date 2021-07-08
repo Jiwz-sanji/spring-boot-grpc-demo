@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+// option java_multiple_files = true;
+option java_package = "com.tncet.demo.service.grpc";
+
+service HelloWorldService {
+    rpc calculate(calReq) returns (calRes) {}
+    rpc sayHello(HelloRequest) returns (HelloReply) {}
+}
+
+// 定义消息类型
+message calReq {
+    string funcName = 1;
+    map<string, double> varsIn = 2;
+}
+
+message calRes {
+    int32 status = 1;
+    map<string, double> varsOut = 2;
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+    string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+    string message = 1;
+}
